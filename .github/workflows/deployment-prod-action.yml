@@ -29,7 +29,7 @@ jobs:
       run: dotnet publish -c Release -o builded_site
       working-directory: Shortener/Itbeard.Shortener
       
-    - name: 'Deploy Pds.Web to Azure WebApp'
+    - name: 'Deploy Shortener to Azure'
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
