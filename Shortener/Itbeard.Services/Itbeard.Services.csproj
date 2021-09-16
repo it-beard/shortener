@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Itbeard.Data\Itbeard.Data.csproj" />
+      <ProjectReference Include="..\Itbeard.Models\Itbeard.Models.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
+      <PackageReference Include="MaxMind.GeoIP2" Version="4.0.1" />
+    </ItemGroup>
+
+</Project>

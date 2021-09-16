@@ -1,0 +1,15 @@
+.admin {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: gray;
+    font-size: 27px;
+    margin: 20px 0 30px 0;
+    font-weight: bold;
+}
+
+div {
+    margin-bottom: 20px;
+}

@@ -1,0 +1,9 @@
+<a href="admin">На главную</a> / 
+<AuthorizeView>
+    <Authorized>
+        <a href="admin/logout">Вылогиниться</a>
+    </Authorized>
+    <NotAuthorized>
+        <a href="admin/login?redirectUri=/admin">Залогиниться</a>
+    </NotAuthorized>
+</AuthorizeView>

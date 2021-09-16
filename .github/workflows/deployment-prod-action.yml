@@ -1,0 +1,37 @@
+name: Deploy app to Production
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy-site:
+    name: Deploy Site
+    runs-on: ubuntu-latest
+    environment: prod
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+      
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: Shortener/Itbeard.Shortener
+      
+    - name: Build Site
+      run: dotnet build --no-restore --configuration Release
+      working-directory: Shortener/Itbeard.Shortener
+      
+    - name: Publish Site
+      run: dotnet publish -c Release -o builded_site
+      working-directory: Shortener/Itbeard.Shortener
+      
+    - name: 'Deploy Pds.Web to Azure WebApp'
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+        package: Shortener/Itbeard.Shortener/builded_site/ 

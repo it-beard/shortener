@@ -1,0 +1,80 @@
+﻿@page "/admin/reduce"
+@attribute [Authorize]
+@using Itbeard.Services.Interfaces
+@using Itbeard.Core
+@using Itbeard.Services.Exceptions
+@using TextCopy
+@inject IUrlService UrlService
+
+<div class="reducer">
+    <NavMenu />
+    <h1>Создать ссылку</h1>
+    <div>
+        <input type="text" required="required" @bind="link" placeholder="Введите ссылку для сокращения">
+    </div>
+    <div>
+        <input type="text" @bind="name" placeholder="Введите название ссылки (не обязательное поле до 20 символов)">
+    </div>
+    <div>
+        <button @onclick="OnCreateButtonClick">Создать</button>
+    </div>
+
+    @if (!string.IsNullOrEmpty(reducedUrl))
+    {
+        <div class="reduce">
+            <input type="text" @bind="reducedUrl" placeholder="Результат">
+        </div>
+
+        <div class="copy">
+            <button @onclick="OnCopyToClipboard">Скопировать в буфер</button>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(error))
+    {
+        <div class="errors">
+            @error
+        </div>
+    }
+</div>
+
+@code {
+    private string link = string.Empty;
+    private string name = string.Empty;
+    private string reducedUrl = string.Empty;
+    private string error = string.Empty;
+
+    private async Task OnCreateButtonClick()
+    {
+        if (!string.IsNullOrEmpty(name) && name.Length > Constants.MaxShortUrlNameLength)
+        {
+            error = "Недопустимая длина имени ссылки";
+            return;
+        }
+        
+        error = string.Empty;
+        reducedUrl = string.Empty;
+        try
+        {
+            var urlModel = await UrlService.ReduceAsync(link, name);
+            if (urlModel != null)
+            {
+                reducedUrl = $"{Constants.ShortenerUrl}/{urlModel.ShortName}";
+            }
+        }
+        catch (TargetUrlEmptyException ex)
+        {
+            error = ex.Message;
+        }
+        catch (DuplicateShortUrlNameException ex)
+        {
+            error = ex.Message;
+        }
+    }
+
+    private void OnCopyToClipboard()
+    {
+        var clipboard = new Clipboard();
+        clipboard.SetText(reducedUrl);
+    }
+}
