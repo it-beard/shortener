@@ -1,5 +1,10 @@
 ﻿@page "/admin"
+@using Itbeard.Models
+@using Itbeard.Services.Interfaces
 @attribute [Authorize]
+@inject IUrlService urlService
+@inject IConfiguration configuration
+@inject IJSRuntime jsRuntime
 
 <style>
 
@@ -7,11 +12,65 @@
 
 <div class="admin">
     <NavMenu />
-    <h1>Админка ссылок</h1>
-    <div>
-        <a href="admin/reduce">Создать ссылку</a>
-    </div>
+    <h4 class="card-header d-flex justify-content-between align-items-center">
+        <span> Админка ссылок </span>
+        <a class="btn btn-primary" href="admin/reduce">Создать ссылку</a>
+    </h4>
+    <table class="table">
+      <thead>
+        <tr>
+            <th scope="col" style="width: 100px" class="text-center">Создано</th>
+            <th scope="col" style="width: 120px">Короткое имя</th>
+            <th scope="col" style="width: 100px" class="text-center">Переходы</th>
+            <th scope="col">Целевая ссылка</th>
+            <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      @foreach (var url in urls)
+      {
+          <tr>
+              <td class="text-center">
+                  @url.CreatedAt.ToString("dd/MM/yy")
+              </td>
+              <td>
+                  <a href="@($"{configuration["AppUrl"]}/{url.ShortName}")" target="_blank">@url.ShortName</a>
+              </td>
+              <td class="text-center">
+                 @url.VisitCount 
+              </td>
+              <td>
+                  <p class="target-link">
+                      <a href="@url.TargetUrl" target="_blank">@url.TargetUrl</a>
+                  </p>
+              </td>
+              <td>
+                  <button title="Удалить" class="btn btn-danger btn-sm" @onclick="()=>OnDelete(url)">
+                      <i class="bi bi-trash-fill"></i>
+                  </button>
+              </td>
+          </tr>
+      }
+      </tbody>
+    </table>
+    
 </div>
 
 @code {
+    private List<UrlModel> urls = new();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        urls = await urlService.GetAllAsync();
+    }
+    
+    private async Task OnDelete(UrlModel url)
+    {
+        var confirmed = await jsRuntime.InvokeAsync<bool>("confirm", $"Уверены, что хотите удалить {url.ShortName}?");
+        if (confirmed)
+        {
+            await urlService.DeleteAsync(url.Id);
+            urls.Remove(url);
+        }
+    }
 }

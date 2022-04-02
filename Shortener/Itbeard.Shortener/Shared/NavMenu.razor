@@ -1,9 +1,4 @@
-<a href="admin">На главную</a> / 
-<AuthorizeView>
-    <Authorized>
-        <a href="admin/logout">Вылогиниться</a>
-    </Authorized>
-    <NotAuthorized>
-        <a href="admin/login?redirectUri=/admin">Залогиниться</a>
-    </NotAuthorized>
-</AuthorizeView>
+<div class="nav-custom">
+    <a class="btn btn-primary btn-sm" href="admin">На главную</a>
+    <a class="btn btn-danger btn-sm" href="admin/logout">Вылогиниться</a>
+</div>

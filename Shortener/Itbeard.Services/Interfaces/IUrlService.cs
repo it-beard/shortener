@@ -7,5 +7,7 @@ namespace Itbeard.Services.Interfaces
     {
         Task<UrlModel> ReduceAsync(string targetUrl, string shortName);
         Task<UrlModel> GetAsync(string shortGuid);
+        Task<List<UrlModel>> GetAllAsync();
+        Task DeleteAsync(Guid id);
     }
 }

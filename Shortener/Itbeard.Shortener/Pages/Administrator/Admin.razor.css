@@ -10,6 +10,13 @@ h1 {
     font-weight: bold;
 }
 
-div {
-    margin-bottom: 20px;
+.target-link {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 400px;
+}
+
+table {
+    margin-top: 20px;
 }

@@ -1,5 +1,7 @@
 using Itbeard.Data.Entites;
 using Itbeard.Data.Repositories.Interfaces;
+using Itbeard.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Itbeard.Data.Repositories
 {
@@ -13,6 +15,20 @@ namespace Itbeard.Data.Repositories
             this.context = context;
         }
 
-        // Can bee extended by any additional methods that do not present in RepositoryBase
+        public async Task<List<UrlModel>> GetAllUrlsWithShortStatByDateDescAsync()
+        {
+            return await context.Urls
+                .Select(u => new UrlModel
+                {
+                   Id = u.Id,
+                   CreatedAt = u.CreatedAt,
+                   UpdatedAt = u.UpdatedAt,
+                   ShortName = u.ShortName,
+                   TargetUrl = u.TargetUrl,
+                   VisitCount = u.Statistics.Count
+                })
+                .OrderByDescending(p =>p.CreatedAt)
+                .ToListAsync();
+        }
     }
 }

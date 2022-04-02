@@ -1,0 +1,5 @@
+﻿Add migration: 
+    dotnet-ef migrations add Initial --project Itbeard.Data --startup-project Itbeard.Shortener
+    
+Update database:
+    dotnet-ef database update --project Itbeard.Data --startup-project Itbeard.Shortener

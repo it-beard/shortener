@@ -57,7 +57,8 @@ namespace Itbeard.Services.Services
                 Id = Guid.NewGuid(),
                 ShortName = string.IsNullOrEmpty(shortName) ? 
                     Guid.NewGuid().ToString().Substring(0, 7) : shortName,
-                TargetUrl = targetUrl
+                TargetUrl = targetUrl,
+                CreatedAt = DateTime.UtcNow
             };
 
             await urlRepository.InsertAsync(url);
@@ -71,6 +72,18 @@ namespace Itbeard.Services.Services
         {
             var url = await urlRepository.GetFirstWhereAsync( u => u.ShortName == shortName);
             return mapper.Map<UrlModel>(url);
+        }
+        
+        public async Task<List<UrlModel>> GetAllAsync()
+        {
+            var urls = await urlRepository.GetAllUrlsWithShortStatByDateDescAsync();
+            return mapper.Map<List<UrlModel>>(urls);
+        }
+        
+        public async Task DeleteAsync(Guid id)
+        {
+            var url = await urlRepository.GetFirstWhereAsync( u => u.Id == id);
+            urlRepository.Delete(url);
         }
     }
 }

@@ -25,9 +25,13 @@ namespace Itbeard.Services.Services
             var entity = mapper.Map<Statistic>(model);
             try
             {
-                var geoData = GetGeoData(model.IpAddress, rootFolder);
-                entity.City = geoData.City;
-                entity.Country = geoData.Country;
+                var pathToGeoDb =  rootFolder + "\\GeoLite2-City.mmdb";
+                if (File.Exists(pathToGeoDb))
+                {
+                    var geoData = GetGeoData(model.IpAddress, pathToGeoDb);
+                    entity.City = geoData.City;
+                    entity.Country = geoData.Country;
+                }
             }
             catch (AddressNotFoundException)
             {
@@ -37,9 +41,9 @@ namespace Itbeard.Services.Services
             await statisticRepository.InsertAsync(entity);
         }
 
-        private (string Country, string City) GetGeoData(string ipAddress, string rootFolder)
+        private (string Country, string City) GetGeoData(string ipAddress, string pathToGeoDb)
         {
-            using var reader = new DatabaseReader(rootFolder + "\\GeoLite2-City.mmdb");
+            using var reader = new DatabaseReader(pathToGeoDb);
             var cityInfo = reader.City(ipAddress);
 
             return (cityInfo.Country.Name, cityInfo.City.Name);

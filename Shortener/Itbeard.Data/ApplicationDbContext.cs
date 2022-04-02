@@ -6,7 +6,10 @@ namespace Itbeard.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options){}
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+            
+        }
 
         public DbSet<Url> Urls { get; set; }
         public DbSet<Statistic> Statistics { get; set; }

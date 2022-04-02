@@ -4,7 +4,8 @@
 @using Itbeard.Core
 @using Itbeard.Services.Exceptions
 @using TextCopy
-@inject IUrlService UrlService
+@inject IUrlService urlService
+@inject IConfiguration configuration
 
 <div class="reducer">
     <NavMenu />
@@ -56,10 +57,10 @@
         reducedUrl = string.Empty;
         try
         {
-            var urlModel = await UrlService.ReduceAsync(link, name);
+            var urlModel = await urlService.ReduceAsync(link, name);
             if (urlModel != null)
             {
-                reducedUrl = $"{Constants.ShortenerUrl}/{urlModel.ShortName}";
+                reducedUrl = $"{configuration["AppUrl"]}/{urlModel.ShortName}";
             }
         }
         catch (TargetUrlEmptyException ex)
