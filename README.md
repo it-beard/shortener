@@ -1,3 +1,9 @@
+[![License](https://img.shields.io/github/license/it-beard/shortener)](https://github.com/it-beard/shortener/blob/main/LICENSE)
+[![Stars](https://img.shields.io/github/stars/it-beard/shortener)](https://github.com/it-beard/shortener/stargazers)
+[![Issues](https://img.shields.io/github/issues/it-beard/shortener)](https://github.com/it-beard/shortener/issues)
+
+[![Deploy apps to Production](https://github.com/it-beard/shortener/actions/workflows/deployment-prod-action.yml/badge.svg?branch=main)](https://github.com/it-beard/shortener/actions/workflows/deployment-prod-action.yml)
+
 # Описание
 Web-сервис по сокращению ссылок от АйТиБороды.
 
