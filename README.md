@@ -5,7 +5,7 @@
 [![Deploy apps to Production](https://github.com/it-beard/shortener/actions/workflows/deployment-prod-action.yml/badge.svg?branch=main)](https://github.com/it-beard/shortener/actions/workflows/deployment-prod-action.yml)
 
 # Описание
-Web-сервис по сокращению ссылок от АйТиБороды.
+Web-сервис по сокращению ссылок от АйТиБороды. Создан на .NET 6 и Blazor Server.
 
 # Настройка и запуск
 1. Подготовьте SQL-подобную базу данных.
