@@ -7,6 +7,10 @@
 # Описание
 Web-сервис по сокращению ссылок от АйТиБороды. Создан на .NET 6 и Blazor Server.
 
+<img src="https://github.com/it-beard/shortener/blob/develop/.github/readme-images/1.png" title="Список всех ссылок" width="600" />
+
+<img src="https://github.com/it-beard/shortener/blob/develop/.github/readme-images/2.png" title="Интерфейс сокращения ссылки" width="600" />
+
 # Настройка и запуск
 1. Подготовьте SQL-подобную базу данных.
    - Установите [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) или любую другую SQL-native базу данных (Azure SQL Edge под ARM и т.п.)
