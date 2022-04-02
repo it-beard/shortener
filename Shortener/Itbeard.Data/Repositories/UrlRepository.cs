@@ -28,6 +28,7 @@ namespace Itbeard.Data.Repositories
                    VisitCount = u.Statistics.Count
                 })
                 .OrderByDescending(p =>p.CreatedAt)
+                .ThenBy(p => p.ShortName)
                 .ToListAsync();
         }
     }
