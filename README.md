@@ -49,8 +49,9 @@ function userWhitelist(user, context, callback) {
   callback(null, user, context);
 }
 ```
-3. Соберите и запустите проект `Itbeard.Shortener`.
-4. Откройте в браузере ссылку https://localhost:5001/admin - это точка входа в администраторский интерфейс сокращателя.
+3. В файле `shortener/Shortener/Itbeard.Shortener/appsettings.json` внесите адрес вашего сокращателя в поле `AppUrl`
+4. Соберите и запустите проект `Itbeard.Shortener`.
+5. Откройте в браузере ссылку https://localhost:5001/admin - это точка входа в администраторский интерфейс сокращателя.
 
 
 ## Полезные ссылки
