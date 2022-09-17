@@ -8,20 +8,40 @@
 @inject IUrlService urlService
 @inject IConfiguration configuration
 @inject IJSRuntime jsRuntime
+@inject IStringLocalizer<Localizations> Loc
 
 <div class="custom-container">
     <NavMenu />
     <h4 class="card-header d-flex justify-content-between align-items-center">
-        <span> Админка ссылок </span>
-        <a class="btn btn-primary" href="admin/reduce">Создать ссылку</a>
+        <span>
+            @Loc[Localizations.Index_Header]
+        </span>
+        <a
+            title="@Loc[Localizations.Index_ShortenLink]"
+            alt="@Loc[Localizations.Index_ShortenLink]"
+            class="btn btn-success" href="admin/reduce">
+            @Loc[Localizations.Index_ShortenLink]
+        </a>
     </h4>
     <table class="table">
         <thead>
         <tr>
-            <th class="date-header text-center">Создано</th>
-            <th class="name-header">Короткое имя</th>
-            <th class="statistics-header">Переходы</th>
-            <th>Целевая ссылка</th>
+            <th class="date-header text-center">
+                @Loc[Localizations.Index_TableHead_Created]
+            </th>
+
+            <th class="name-header">
+                @Loc[Localizations.Index_TableHead_ShortName]
+            </th>
+
+            <th class="statistics-header">
+                @Loc[Localizations.Index_TableHead_Clicks]
+            </th>
+
+            <th>
+                @Loc[Localizations.Index_TableHead_TargetUrl]
+            </th>
+
             <th class="actions-header text-center"></th>
         </tr>
         </thead>
@@ -30,7 +50,9 @@
         {
             <tr>
                 <td class="text-center">
-                    @url.CreatedAt.ToString("dd/MM/yy")
+                    <span class="data-label">
+                        @url.CreatedAt.ToString("dd/MM/yy")
+                    </span>
                 </td>
 
                 <td>
@@ -50,12 +72,20 @@
                 <td class="actions-row text-center">
                     <div class="actions-buttons">
                         @{
-                            <button title="Редактировать" class="btn btn-primary btn-sm" @onclick="() => OnEdit(url.Id)">
+                            <button
+                                title="@Loc[Localizations.Index_TableButtons_Edit]"
+                                alt="@Loc[Localizations.Index_TableButtons_Edit]"
+                                class="btn btn-primary btn-sm"
+                                @onclick="() => OnEdit(url.Id)">
                                 <i class="bi bi-pencil-fill"></i>
                             </button>
                         }
                         @{
-                            <button title="Удалить" class="btn btn-danger btn-sm" @onclick="() => OnDelete(url)">
+                            <button
+                                title="@Loc[Localizations.Index_TableButtons_Delete]"
+                                alt="@Loc[Localizations.Index_TableButtons_Delete]"
+                                class="btn btn-danger btn-sm"
+                                @onclick="() => OnDelete(url)">
                                 <i class="bi bi-trash-fill"></i>
                             </button>
                         }
@@ -75,14 +105,15 @@
         urls = await urlService.GetAllAsync();
     }
 
-    private async Task OnEdit(Guid id)
+    private void OnEdit(Guid id)
     {
         NavigationManager.NavigateTo($"admin/edit/{id}");
     }
 
     private async Task OnDelete(UrlModel url)
     {
-        var confirmed = await jsRuntime.InvokeAsync<bool>("confirm", $"Уверены, что хотите удалить {url.ShortName}?");
+        var confirmed = await jsRuntime
+            .InvokeAsync<bool>("confirm", $"{Loc[Localizations.ConfirmJS_DeleteLink]} \"{url.ShortName}\"?");
         if (confirmed)
         {
             await urlService.DeleteAsync(url.Id);

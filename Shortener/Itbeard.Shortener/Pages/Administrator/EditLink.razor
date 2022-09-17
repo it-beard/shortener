@@ -7,24 +7,49 @@
 
 @inject NavigationManager NavigationManager
 @inject IUrlService urlService
+@inject IStringLocalizer<Localizations> Loc
 
 <div class="custom-container">
     <NavMenu />
-    <h2>Редактирование ссылки</h2>
+    <h2>
+        @Loc[Localizations.EditLink_Header]
+    </h2>
 
     <div class="form-group">
-        <label for="link">Целевая ссылка</label>
-        <input id="link" class="form-control" type="text" required="required" @bind="url.TargetUrl" placeholder="Введите новый целевой адрес">
+        <label for="link">
+            @Loc[Localizations.EditLink_TargetUrl]
+        </label>
+        <input id="link"
+               class="form-control"
+               type="text"
+               required="required"
+               @bind="url.TargetUrl"
+               title="@Loc[Localizations.EditLink_TargetUrl]"
+               placeholder="@Loc[Localizations.EditLink_TargetUrlPlaceholder]">
     </div>
 
     <div class="form-group">
-        <label for="link">Короткое имя</label>
-        <input id="name" class="form-control" type="text" @bind="url.ShortName" disabled="disabled">
-        <small id="nateNote" class="form-text text-muted">Для изменения короткого имени удалите эту ссылку и создайте новую с необходимым именем.</small>
+        <label for="link">
+            @Loc[Localizations.EditLink_ShortName]
+        </label>
+        <input id="name"
+               class="form-control"
+               type="text"
+               @bind="url.ShortName"
+               title="@Loc[Localizations.EditLink_ShortName]"
+               disabled="disabled">
+        <small id="nateNote" class="form-text text-muted">
+            @Loc[Localizations.EditLink_ShortNameNote]
+        </small>
     </div>
 
     <div class="form-group">
-        <button class="btn btn-success w-100" @onclick="OnButtonClick" disabled="@(url == null || url.Id == Guid.Empty)">Сохранить</button>
+        <button class="btn btn-success w-100"
+                @onclick="OnButtonClick"
+                disabled="@(url == null || url.Id == Guid.Empty)"
+                title="@Loc[Localizations.EditLink_SaveButton]">
+            @Loc[Localizations.EditLink_SaveButton]
+        </button>
     </div>
 
     @if (!string.IsNullOrEmpty(error))
@@ -60,9 +85,9 @@
             await urlService.EditAsync(url.Id, url.TargetUrl);
             NavigationManager.NavigateTo("admin");
         }
-        catch (TargetUrlEmptyException ex)
+        catch (TargetUrlEmptyException)
         {
-            error = "Введите целевую ссылку.";
+            error = Loc[Localizations.EditLink_Exception_TargetUrlEmpty];
         }
     }
 

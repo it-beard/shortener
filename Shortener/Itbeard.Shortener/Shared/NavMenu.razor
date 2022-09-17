@@ -1,4 +1,17 @@
+@inject IStringLocalizer<Localizations> Loc
+
 <div class="nav-custom">
-    <a class="btn btn-primary btn-sm" href="admin">На главную</a>
-    <a class="btn btn-danger btn-sm" href="admin/logout">Вылогиниться</a>
+    <a
+        title="@Loc[Localizations.Nav_ToIndex]"
+        alt="@Loc[Localizations.Nav_ToIndex]"
+        class="btn btn-primary btn-sm"
+        href="admin">
+        @Loc[Localizations.Nav_ToIndex]
+    </a>
+    <a
+        title="@Loc[Localizations.Nav_Logout]"
+        alt="@Loc[Localizations.Nav_Logout]"
+        class="btn btn-danger btn-sm"
+        href="admin/logout">@Loc[Localizations.Nav_Logout]</a>
+    <CultureSelector />
 </div>

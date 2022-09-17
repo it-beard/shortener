@@ -1,33 +1,49 @@
-﻿<Router AppAssembly="@typeof(App).Assembly" PreferExactMatches="@true">
-    <Found Context="routeData">
-        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
-            <Authorizing>
-                <p>Восстанавливаем сессию, момент...</p>
-            </Authorizing>
-            <NotAuthorized>
-                <div class="login">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-header">
-                            Сокращатель ссылок
+﻿@inject IStringLocalizer<Localizations> Loc
+
+    <Router AppAssembly="@typeof(App).Assembly" PreferExactMatches="@true">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <Authorizing>
+                    <div>
+                        @Loc[Localizations.App_RestoreSession]
+                    </div>
+                </Authorizing>
+                <NotAuthorized>
+                    <div class="login-container">
+                        <div class="card">
+                            <div class="card-header">
+                                @Loc[Localizations.App_Title]
+                            </div>
+                            <div class="card-body">
+                                <div class="card-text">
+                                    @Loc[Localizations.App_Description]
+                                </div>
+                                <a
+                                    class="btn btn-primary"
+                                    href="admin/login?redirectUri=/admin">
+                                    @Loc[Localizations.App_LoginButton]
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                Вход в панель администратора
-                            </p>
-                            <a
-                                class="btn btn-primary"
-                                href="admin/login?redirectUri=/admin">
-                                Войти
-                            </a>
+
+                        <div class="culture">
+                            <CultureSelector />
                         </div>
                     </div>
+                </NotAuthorized>
+            </AuthorizeRouteView>
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <div class="login-container">
+                    <div>
+                        @Loc[Localizations.App_PageNotFound]
+                    </div>
+
+                    <div class="culture">
+                        <CultureSelector/>
+                    </div>
                 </div>
-            </NotAuthorized>
-        </AuthorizeRouteView>
-    </Found>
-    <NotFound>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <p>Страница не найдена.</p>
-        </LayoutView>
-    </NotFound>
-</Router>
+            </LayoutView>
+        </NotFound>
+    </Router>

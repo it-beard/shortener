@@ -1,8 +1,16 @@
 ﻿@page "/"
 @namespace Itbeard.Shortener.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization
 @{
     Layout = null;
+    HttpContext.Response.Cookies.Append(
+        CookieRequestCultureProvider.DefaultCookieName,
+        CookieRequestCultureProvider.MakeCookieValue(
+            new RequestCulture(
+                CultureInfo.CurrentCulture,
+                CultureInfo.CurrentUICulture)));
 }
 
 <!DOCTYPE html>
@@ -33,5 +41,6 @@
 </div>
 
 <script src="_framework/blazor.server.js"></script>
+
 </body>
 </html>

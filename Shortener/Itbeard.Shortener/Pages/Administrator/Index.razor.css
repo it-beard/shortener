@@ -33,7 +33,7 @@ table .name-header {
 }
 
 table .statistics-header {
-    width: 100px
+    width: 70px
 }
 
 table .actions-header {
@@ -47,4 +47,20 @@ table .actions-row {
 .actions-buttons {
     margin: 0 auto;
     white-space: pre;
+}
+
+table a {
+    text-decoration: none;
+}
+
+table a:hover {
+    text-decoration: underline;
+}
+
+table .data-label {
+    font-size: 0.89rem;
+    background-color: lightslategray;
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: white;
 }

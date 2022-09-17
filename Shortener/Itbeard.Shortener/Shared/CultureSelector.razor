@@ -1,0 +1,43 @@
+@using  System.Globalization
+
+@inject IJSRuntime JS
+@inject NavigationManager Nav
+@inject IStringLocalizer<Localizations> Loc
+
+<div class="culture-selector">
+    <label>
+        @((MarkupString)Loc[Localizations.SelectSiteLanguage].Value)
+        <select @bind="Culture">
+            <option value="@(new CultureInfo("en"))">English</option>
+            <option value="@(new CultureInfo("ru"))">Русский</option>
+            <option value="@(new CultureInfo("be"))">Беларуская</option>
+        </select>
+    </label>
+</div>
+
+@code
+{
+    protected override void OnInitialized()
+    {
+        Culture = CultureInfo.CurrentCulture;
+    }
+
+    private CultureInfo Culture
+    {
+        get => CultureInfo.CurrentCulture;
+        set
+        {
+            if (CultureInfo.CurrentCulture != value)
+            {
+                var uri = new Uri(Nav.Uri)
+                    .GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
+                var cultureEscaped = Uri.EscapeDataString(value.Name);
+                var uriEscaped = Uri.EscapeDataString(uri);
+
+                Nav.NavigateTo(
+                    $"Culture/Set?culture={cultureEscaped}&redirectUri={uriEscaped}",
+                    forceLoad: true);
+            }
+        }
+    }
+}

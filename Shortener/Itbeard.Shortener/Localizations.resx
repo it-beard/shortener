@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Index_Header" xml:space="preserve">
+        <value>All URLs</value>
+    </data>
+    <data name="SelectSiteLanguage" xml:space="preserve">
+        <value>Change language:</value>
+    </data>
+    <data name="Nav_Logout" xml:space="preserve">
+        <value>Logout</value>
+    </data>
+    <data name="Nav_ToIndex" xml:space="preserve">
+        <value>To Index Page</value>
+    </data>
+    <data name="ConfirmJS_DeleteLink" xml:space="preserve">
+        <value>Are you sure you want to remove short URL</value>
+    </data>
+    <data name="Index_ShortenLink" xml:space="preserve">
+        <value>Shorten URL</value>
+    </data>
+    <data name="Index_TableHead_Created" xml:space="preserve">
+        <value>Created</value>
+    </data>
+    <data name="Index_TableHead_ShortName" xml:space="preserve">
+        <value>Short name</value>
+    </data>
+    <data name="Index_TableHead_Clicks" xml:space="preserve">
+        <value>Clicks</value>
+    </data>
+    <data name="Index_TableHead_TargetUrl" xml:space="preserve">
+        <value>Target URL</value>
+    </data>
+    <data name="Index_TableButtons_Edit" xml:space="preserve">
+        <value>Edit</value>
+    </data>
+    <data name="Index_TableButtons_Delete" xml:space="preserve">
+        <value>Delete</value>
+    </data>
+    <data name="ReduceLink_Header" xml:space="preserve">
+        <value>Reducing URL</value>
+    </data>
+    <data name="ReduceLink_TargetUrl" xml:space="preserve">
+        <value>Target URL</value>
+    </data>
+    <data name="ReduceLink_TargetUrlPlaceholder" xml:space="preserve">
+        <value>Enter a URL to reducing</value>
+    </data>
+    <data name="ReduceLink_ShortName" xml:space="preserve">
+        <value>Short name</value>
+    </data>
+    <data name="ReduceLink_ShortNamePlaceholder" xml:space="preserve">
+        <value>Enter a short name for target URL</value>
+    </data>
+    <data name="ReduceLink_ShortNameNote" xml:space="preserve">
+        <value>If you leave the field empty, a random name of 7 characters will be generated.</value>
+    </data>
+    <data name="ReduceLink_CreateButton" xml:space="preserve">
+        <value>Create</value>
+    </data>
+    <data name="ReduceLink_ResultLink" xml:space="preserve">
+        <value>Result URL</value>
+    </data>
+    <data name="ReduceLink_Copy" xml:space="preserve">
+        <value>Copy to clipboard</value>
+    </data>
+    <data name="ReduceLink_Exception_LongShortName" xml:space="preserve">
+        <value>The maximum length of a short name cannot exceed 20 characters.</value>
+    </data>
+    <data name="ReduceLink_Exception_TargetUrlEmpty" xml:space="preserve">
+        <value>Enter the target URL.</value>
+    </data>
+    <data name="ReduceLink_Exception_DuplicateShortUrl" xml:space="preserve">
+        <value>A short name exists. Choose another name.</value>
+    </data>
+    <data name="EditLink_Header" xml:space="preserve">
+        <value>Edit URL</value>
+    </data>
+    <data name="EditLink_TargetUrl" xml:space="preserve">
+        <value>Target URL</value>
+    </data>
+    <data name="EditLink_TargetUrlPlaceholder" xml:space="preserve">
+        <value>Enter a new target URL</value>
+    </data>
+    <data name="EditLink_ShortName" xml:space="preserve">
+        <value>Short name</value>
+    </data>
+    <data name="EditLink_ShortNameNote" xml:space="preserve">
+        <value>To change the short name, delete this short URL and create a new one with the desired name.</value>
+    </data>
+    <data name="EditLink_SaveButton" xml:space="preserve">
+        <value>Save</value>
+    </data>
+    <data name="EditLink_Exception_TargetUrlEmpty" xml:space="preserve">
+        <value>Enter the target URL.</value>
+    </data>
+    <data name="Error_Message" xml:space="preserve">
+        <value>Упс... При обработке вашего запроса произошла ошибка.</value>
+    </data>
+    <data name="Redirector_RedirectMessagge" xml:space="preserve">
+        <value>You're about to be thrown over here:</value>
+    </data>
+    <data name="Redirector_UrlNotFound" xml:space="preserve">
+        <value>URL not found.</value>
+    </data>
+    <data name="App_RestoreSession" xml:space="preserve">
+        <value>Restoring the session, the moment...</value>
+    </data>
+    <data name="App_Title" xml:space="preserve">
+        <value>URL Shortener</value>
+    </data>
+    <data name="App_Description" xml:space="preserve">
+        <value>Login to admin panel</value>
+    </data>
+    <data name="App_PageNotFound" xml:space="preserve">
+        <value>Page not found.</value>
+    </data>
+    <data name="App_LoginButton" xml:space="preserve">
+        <value>Login</value>
+    </data>
+</root>

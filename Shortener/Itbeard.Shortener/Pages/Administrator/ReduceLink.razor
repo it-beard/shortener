@@ -1,40 +1,77 @@
 ﻿@page "/admin/reduce"
 @attribute [Authorize]
+
 @using Itbeard.Services.Interfaces
 @using Itbeard.Core
 @using Itbeard.Services.Exceptions
 @using TextCopy
+
 @inject IUrlService urlService
 @inject IConfiguration configuration
+@inject IStringLocalizer<Localizations> Loc
 
 <div class="custom-container">
     <NavMenu />
-    <h2>Сокращение ссылки</h2>
+    <h2>
+        @Loc[Localizations.ReduceLink_Header]
+    </h2>
 
     <div class="form-group">
-        <label for="link">Целевая ссылка</label>
-        <input id="link" class="form-control" type="text" required="required" @bind="link" placeholder="Введите ссылку для сокращения">
+        <label for="link">
+            @Loc[Localizations.ReduceLink_TargetUrl]
+        </label>
+        <input id="link"
+               class="form-control"
+               type="text"
+               required="required"
+               @bind="link"
+               title="@Loc[Localizations.ReduceLink_TargetUrl]"
+               placeholder="@Loc[Localizations.ReduceLink_TargetUrlPlaceholder]">
     </div>
 
     <div class="form-group">
-        <label for="name">Короткое имя</label>
-        <input id="name" class="form-control" type="text" @bind="name" placeholder="Введите короткое имя для ссылки">
-        <small id="nateNote" class="form-text text-muted">Если оставить поле пустым, то сгенерируется случайное имя из 7 символов.</small>
+        <label for="name">
+            @Loc[Localizations.ReduceLink_ShortName]
+        </label>
+        <input id="name"
+               class="form-control"
+               type="text"
+               @bind="name"
+               title="@Loc[Localizations.ReduceLink_ShortName]"
+               placeholder="@Loc[Localizations.ReduceLink_ShortNamePlaceholder]">
+        <small id="nateNote" class="form-text text-muted">
+            @Loc[Localizations.ReduceLink_ShortNameNote]
+        </small>
     </div>
 
     <div class="form-group">
-        <button class="btn btn-success  w-100" @onclick="OnCreateButtonClick">Создать</button>
+        <button class="btn btn-success w-100"
+                @onclick="OnCreateButtonClick"
+                title="@Loc[Localizations.ReduceLink_CreateButton]"
+                alt="@Loc[Localizations.ReduceLink_CreateButton]">
+            @Loc[Localizations.ReduceLink_CreateButton]
+        </button>
     </div>
 
     @if (!string.IsNullOrEmpty(reducedUrl))
     {
         <div class="form-group reduce">
-            <label for="finalLink">Итоговая ссылка</label>
-            <input id="finalLink" class="form-control" type="text" @bind="reducedUrl" placeholder="Результат">
+            <label for="finalLink">
+                @Loc[Localizations.ReduceLink_ResultLink]
+            </label>
+            <input id="finalLink"
+                   class="form-control"
+                   type="text"
+                   @bind="reducedUrl"
+                   title="@Loc[Localizations.ReduceLink_ResultLink]">
         </div>
 
         <div class="form-group copy">
-            <button class="btn btn-primary  w-100" @onclick="OnCopyToClipboard">Скопировать в буфер</button>
+            <button class="btn btn-primary  w-100"
+                    @onclick="OnCopyToClipboard"
+                    title="@Loc[Localizations.ReduceLink_Copy]">
+                @Loc[Localizations.ReduceLink_Copy]
+            </button>
         </div>
     }
 
@@ -56,7 +93,7 @@
     {
         if (!string.IsNullOrEmpty(name) && name.Length > Constants.MaxShortUrlNameLength)
         {
-            error = "Максимальная длина короткого имени ссылки не может превышать 20 символов.";
+            error = Loc[Localizations.ReduceLink_Exception_LongShortName];
             return;
         }
 
@@ -70,13 +107,13 @@
                 reducedUrl = $"{configuration["AppUrl"]}/{urlModel.ShortName}";
             }
         }
-        catch (TargetUrlEmptyException ex)
+        catch (TargetUrlEmptyException)
         {
-            error = "Введите целевую ссылку.";
+            error = Loc[Localizations.ReduceLink_Exception_TargetUrlEmpty];
         }
-        catch (DuplicateShortUrlNameException ex)
+        catch (DuplicateShortUrlNameException)
         {
-            error = "Короткое имя существует. Выберите другое имя.";
+            error = Loc[Localizations.ReduceLink_Exception_DuplicateShortUrl];
         }
     }
 

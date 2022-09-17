@@ -5,19 +5,25 @@
 @using Microsoft.AspNetCore.Http
 @using DeviceDetectorNET
 @using Microsoft.AspNetCore.Hosting
+
 @inject IUrlService UrlService
 @inject IStatisticService StatisticService
 @inject IWebHostEnvironment WebHostEnvironment
 @inject NavigationManager NavigationManager
 @inject IHttpContextAccessor HttpContextAccessor
+@inject IStringLocalizer<Localizations> Loc
 
 @if (urlEntity?.TargetUrl != null)
 {
-    <text>Сейчас тебя перекинет сюда: @urlEntity.TargetUrl</text>
+    <text>
+        @Loc[Localizations.Redirector_RedirectMessagge] @urlEntity.TargetUrl
+    </text>
 }
 else
 {
-    <text>Ссылка не найдена.</text>
+    <text>
+        @Loc[Localizations.Redirector_UrlNotFound]
+    </text>
 }
 
 @code {

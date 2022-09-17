@@ -1,0 +1,131 @@
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Index_Header" xml:space="preserve">
+        <value>Усе спасылкі</value>
+    </data>
+    <data name="SelectSiteLanguage" xml:space="preserve">
+        <value>Змяніць мову:</value>
+    </data>
+    <data name="Nav_ToIndex" xml:space="preserve">
+        <value>На галоўную</value>
+    </data>
+    <data name="Nav_Logout" xml:space="preserve">
+        <value>Вылагініцца</value>
+    </data>
+    <data name="ConfirmJS_DeleteLink" xml:space="preserve">
+        <value>Ці вы ўпэўнены, што хочаце выдаліць спасылку</value>
+    </data>
+    <data name="Index_ShortenLink" xml:space="preserve">
+        <value>Скараціць спасылку</value>
+    </data>
+    <data name="Index_TableButtons_Delete" xml:space="preserve">
+        <value>Выдаліць</value>
+    </data>
+    <data name="Index_TableButtons_Edit" xml:space="preserve">
+        <value>Рэдагаваць</value>
+    </data>
+    <data name="Index_TableHead_Clicks" xml:space="preserve">
+        <value>Клікі</value>
+    </data>
+    <data name="Index_TableHead_Created" xml:space="preserve">
+        <value>Створана</value>
+    </data>
+    <data name="Index_TableHead_ShortName" xml:space="preserve">
+        <value>Кароткае імя</value>
+    </data>
+    <data name="Index_TableHead_TargetUrl" xml:space="preserve">
+        <value>Мэтавая спасылка</value>
+    </data>
+    <data name="ReduceLink_Copy" xml:space="preserve">
+        <value>Скапіяваць у буфер</value>
+    </data>
+    <data name="ReduceLink_CreateButton" xml:space="preserve">
+        <value>Стварыць</value>
+    </data>
+    <data name="ReduceLink_ResultLink" xml:space="preserve">
+        <value>Выніковая спасылка</value>
+    </data>
+    <data name="ReduceLink_ShortName" xml:space="preserve">
+        <value>Кароткае імя</value>
+    </data>
+    <data name="ReduceLink_TargetUrl" xml:space="preserve">
+        <value>Мэтавая спасылка</value>
+    </data>
+    <data name="ReduceLink_TargetUrlPlaceholder" xml:space="preserve">
+        <value>Увядзіце спасылку для скарачэння</value>
+    </data>
+    <data name="ReduceLink_ShortNamePlaceholder" xml:space="preserve">
+        <value>Увядзіце кароткае імя для мэтавай спасылкі</value>
+    </data>
+    <data name="ReduceLink_ShortNameNote" xml:space="preserve">
+        <value>Калі пакінуць поле пустым, то згенеруецца выпадковае імя з 7 сімбалаў.</value>
+    </data>
+    <data name="ReduceLink_Header" xml:space="preserve">
+        <value>Скарачэнне спасылкі</value>
+    </data>
+    <data name="ReduceLink_Exception_TargetUrlEmpty" xml:space="preserve">
+        <value>Увядзіце мэтавую спасылку.</value>
+    </data>
+    <data name="ReduceLink_Exception_LongShortName" xml:space="preserve">
+        <value>Максімальная даўжыня кароткага імя не можа перавышаць 20 сімвалаў.</value>
+    </data>
+    <data name="ReduceLink_Exception_DuplicateShortUrl" xml:space="preserve">
+        <value>Кароткае імя існуе. Абярыце іншае імя.</value>
+    </data>
+    <data name="EditLink_SaveButton" xml:space="preserve">
+        <value>Захаваць</value>
+    </data>
+    <data name="EditLink_TargetUrl" xml:space="preserve">
+        <value>Мэтавая спасылка</value>
+    </data>
+    <data name="EditLink_ShortName" xml:space="preserve">
+        <value>Кароткае імя</value>
+    </data>
+    <data name="EditLink_Header" xml:space="preserve">
+        <value>Рэдагаванне спасылкі</value>
+    </data>
+    <data name="EditLink_Exception_TargetUrlEmpty" xml:space="preserve">
+        <value>Увядзіце мэтавую спасылку.</value>
+    </data>
+    <data name="EditLink_ShortNameNote" xml:space="preserve">
+        <value>Для змены кароткага імя выдаліце гэтую скарочанную спасылку і стварыце новую з неабходным імем.</value>
+    </data>
+    <data name="EditLink_TargetUrlPlaceholder" xml:space="preserve">
+        <value>Увядзіце новы мэтавую спасылку</value>
+    </data>
+    <data name="Error_Message" xml:space="preserve">
+        <value>Упс... Пры апрацоўцы вашага запыту адбылася памылка.</value>
+    </data>
+    <data name="Redirector_RedirectMessagge" xml:space="preserve">
+        <value>Зараз цябе перакіне сюды:</value>
+    </data>
+    <data name="Redirector_UrlNotFound" xml:space="preserve">
+        <value>Спасылка не знойдзена.</value>
+    </data>
+    <data name="App_PageNotFound" xml:space="preserve">
+        <value>Старонка не знойдзена.</value>
+    </data>
+    <data name="App_RestoreSession" xml:space="preserve">
+        <value>Аднаўляем сесію, момант...</value>
+    </data>
+    <data name="App_Description" xml:space="preserve">
+        <value>Уваход у панэль адміністратара</value>
+    </data>
+    <data name="App_Title" xml:space="preserve">
+        <value>Скарачальнік URL</value>
+    </data>
+    <data name="App_LoginButton" xml:space="preserve">
+        <value>Увайсці</value>
+    </data>
+</root>

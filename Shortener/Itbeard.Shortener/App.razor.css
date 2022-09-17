@@ -1,3 +1,8 @@
+.login-container {
+    width: 18rem;
+    margin: 0 auto;
+}
+
 .card {
     margin: 50px auto 0 auto;
 }
@@ -10,4 +15,22 @@
 .card-header {
     text-align: center;
     font-size: 1.25rem;
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+}
+
+.card-text {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.culture {
+    margin-top: 10px;
+}
+
+::deep .culture-selector {
+    display: block !important;
+    float: none !important;
+    text-align: center !important;
 }
