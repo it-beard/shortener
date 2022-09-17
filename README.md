@@ -21,6 +21,10 @@ URL shortener consist of two parts:
 - Reducing links into short link wit 7-simbolic auto-generated or predefined alias
 - Editing target URL in created short link
 
+Also Shortener collect data about rederections for each link: count of redirections, agent info etc.
+
+## Interface of application
+
 <img src="https://github.com/it-beard/shortener/blob/develop/.github/readme-images/0.png" title="Login interface" width="600" />
 
 <img src="https://github.com/it-beard/shortener/blob/develop/.github/readme-images/1.png" title="List of all URLs" width="600" />
