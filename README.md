@@ -20,6 +20,7 @@ URL shortener consist of two parts:
 - Authentication flow using Auth0 
 - Reducing links into short link wit 7-simbolic auto-generated or predefined alias
 - Editing target URL in created short link
+- Support multilanguage interface (English, Russian, Belarusian)
 
 Also Shortener collect data about rederections for each link: count of redirections, agent info etc.
 
