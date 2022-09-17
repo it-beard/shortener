@@ -5,7 +5,7 @@
 [![Deploy apps to Production](https://github.com/it-beard/shortener/actions/workflows/deployment-prod-action.yml/badge.svg?branch=main)](https://github.com/it-beard/shortener/actions/workflows/deployment-prod-action.yml)
 
 # Description
-**URL Shortener** - this is web service for shortening URLs. Created on .NET 6 and Blazor Server.
+**URL Shortener** is an open-source web service for shortening URLs and based on .NET 6 and Blazor Server techologies.
 
 URL shortener consist of two parts:
 - User area
@@ -29,27 +29,27 @@ URL shortener consist of two parts:
 
 <img src="https://github.com/it-beard/shortener/blob/develop/.github/readme-images/3.png" title="Edit URL interface" width="600" />
 
-# Настройка и запуск
-1. Подготовьте SQL-подобную базу данных.
-   - Установите [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) или любую другую SQL-native базу данных (Azure SQL Edge под ARM и т.п.)
-   - Создайте базу с именем `pds` (или любым другим на ваш вкус).
-   - Обновите строку подключения к БД в поле `ConnectionStrings:DefaultConnection` файла `shortener/Shortener/Itbeard.Shortener/appsettings.json `
-   - Миграция базы до актуального состояния произайдет автоматически при первом запуске проекта.
-2. Настройте аутентификацию через Auth0.
-   - Зарегистрируйтесь в Auth0
-   - Создайте приложение `Application` типа `Single Page Application`
-   - Обновите настройки сокращателя в файле `shortener/Shortener/Itbeard.Shortener/appsettings.json`:
-     - `Auth0:Domain` = `Domain` из приложения в Auth0
-     - `Auth0:ClientId` = `Client ID` из приложения в Auth0
-     - `Auth0:ClientSecret` = `Client Secret` из приложения в Auth0
-   - Обновите настройки приложения Auth0:
-     - В поле `Allowed Callback URLs` внесите `https://localhost:5001//admin/callback`.
-     - В поле `Allowed Logout URLs` внесите `https://localhost:5001`.
-   - В Auth0 удалите базу данных на вкладке `Authentication - Database` или уберите связь вашего `Application` с этой базой, что бы аутентификацию только через Google. Управлять способами логина можно на вкладке `Connections` вашего приложения в Auth0
-   - Добавьте `Rule` в котором явно пропишите, какие емейлы имеют доступ к авторизации в приложении
-     - Пройдите в меню `Auth Pipeline - Rules`
-     - Добавьте правило (rule) по шаблону `Whitelist` и внесите в него емейлы, которым разрешен доступ к авторизации.
-     - Либо создайте правило со следующим кодом (если шаблона `Whitelist` вдруг нет в Auth0):
+# Settigs-up and Run local instance
+1. Prepare a SQL-like database.
+   - Setup an [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) or any other SQL-like database (for example `Azure SQL Edge` good one for ARM processers and so on)
+   - Create the database with `pds` (or any other name on your choise).
+   - Update the database connection string in the`ConnectionStrings:DefaultConnection` field of `shortener/Shortener/Itbeard.Shortener/appsettings.json` file.
+   - Migration of the database to the current state will occur automatically the first time you run the project.
+2. Set up authentication via Auth0.
+   - Register an account on Auth0 service.
+   - Create application `Application` with type `Single Page Application`
+   - Update shortener settings in `shortener/Shortener/Itbeard.Shortener/appsettings.json` file:
+     - `Auth0:Domain` = value of `Domain` field from Auth0 application
+     - `Auth0:ClientId` = value of `Client ID` field from Auth0 application
+     - `Auth0:ClientSecret` = value of `Client Secret` field from Auth0 application
+   - Update settings of Auth0 application:
+     - In field `Allowed Callback URLs` set `https://localhost:5001//admin/callback`.
+     - In field `Allowed Logout URLs` set `https://localhost:5001`.
+   - In Auth0, delete the database on the `Authentication - Database` tab or remove your `Application` link to this database, so that you only authenticate through Google. You can control the login methods on the `Connections` tab of your application in Auth0.
+   - Add a `Rule` in which you explicitly specify which emails have access to authorization in the application:
+     - Go to `Auth Pipeline - Rules` menu.
+     - Add rule in accordance with `Whitelist` template and update rule by emails that are allowed to access the authorization.
+     - Or create a rule with the following code (if the `Whitelist` template is suddenly not founded in Auth0):
 ```
 function userWhitelist(user, context, callback) {
 
@@ -71,10 +71,10 @@ function userWhitelist(user, context, callback) {
   callback(null, user, context);
 }
 ```
-3. В файле `shortener/Shortener/Itbeard.Shortener/appsettings.json` внесите адрес вашего сокращателя в поле `AppUrl`
-4. Соберите и запустите проект `Itbeard.Shortener`.
-5. Откройте в браузере ссылку https://localhost:5001/admin - это точка входа в администраторский интерфейс сокращателя.
+3. Add URL of your Shortener instanse in to field `AppUrl` in `shortener/Shortener/Itbeard.Shortener/appsettings.json` file.
+4. Build and run project `Itbeard.Shortener`.
+5. Open https://localhost:5001/admin in your browser - this URL is the entry point to the admin interface of the Shortener.
 
 
-## Полезные ссылки
-Инструкция по настроке Auth0 в Blazor: https://auth0.com/blog/securing-blazor-webassembly-apps/
+## Useful links
+- Instructions of how to setting up Auth0 in Blazor: https://auth0.com/blog/securing-blazor-webassembly-apps/
