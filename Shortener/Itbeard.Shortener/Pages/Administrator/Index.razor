@@ -1,7 +1,10 @@
 ﻿@page "/admin"
+@attribute [Authorize]
+
 @using Itbeard.Models
 @using Itbeard.Services.Interfaces
-@attribute [Authorize]
+
+@inject NavigationManager NavigationManager
 @inject IUrlService urlService
 @inject IConfiguration configuration
 @inject IJSRuntime jsRuntime
@@ -45,6 +48,9 @@
                   </p>
               </td>
               <td>
+                  <button title="Редактировать" class="btn btn-primary btn-sm" @onclick="()=>OnEdit(url.Id)">
+                      <i class="bi bi-pencil-fill"></i>
+                  </button>
                   <button title="Удалить" class="btn btn-danger btn-sm" @onclick="()=>OnDelete(url)">
                       <i class="bi bi-trash-fill"></i>
                   </button>
@@ -62,6 +68,11 @@
     protected override async Task OnInitializedAsync()
     {
         urls = await urlService.GetAllAsync();
+    }
+    
+    private async Task OnEdit(Guid id)
+    {
+        NavigationManager.NavigateTo($"admin/edit/{id}");
     }
     
     private async Task OnDelete(UrlModel url)

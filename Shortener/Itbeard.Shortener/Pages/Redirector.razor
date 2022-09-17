@@ -28,7 +28,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        urlEntity = await UrlService.GetAsync(ShortName);
+        urlEntity = await UrlService.GetByNameAsync(ShortName);
         if (urlEntity?.TargetUrl != null)
         {
             try

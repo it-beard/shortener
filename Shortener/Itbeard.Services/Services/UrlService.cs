@@ -49,7 +49,7 @@ namespace Itbeard.Services.Services
             var sameShortNameUrl = await urlRepository.GetFirstWhereAsync( u => u.ShortName == shortName);
             if (sameShortNameUrl != null)
             {
-                throw new TargetUrlEmptyException("Короткое имя существует. Выберите другое имя.");
+                throw new DuplicateShortUrlNameException("Короткое имя существует. Выберите другое имя.");
             }
             
             var url = new Url
@@ -67,10 +67,28 @@ namespace Itbeard.Services.Services
 
             return urlModel;
         }
+        
+        public async Task EditAsync(Guid id, string targetUrl)
+        {
+            if (string.IsNullOrEmpty(targetUrl))
+            {
+                throw new TargetUrlEmptyException("Ссылка не может быть пустой!");
+            }
+            
+            var url = await urlRepository.GetFirstWhereAsync( u => u.Id == id);
+            url.TargetUrl = targetUrl;
+            await urlRepository.UpdateAsync(url);
+        }
 
-        public async Task<UrlModel> GetAsync(string shortName)
+        public async Task<UrlModel> GetByNameAsync(string shortName)
         {
             var url = await urlRepository.GetFirstWhereAsync( u => u.ShortName == shortName);
+            return mapper.Map<UrlModel>(url);
+        }
+
+        public async Task<UrlModel> GetByIdAsync(Guid id)
+        {
+            var url = await urlRepository.GetFirstWhereAsync( u => u.Id == id);
             return mapper.Map<UrlModel>(url);
         }
         
