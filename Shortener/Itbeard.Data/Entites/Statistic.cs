@@ -1,5 +1,3 @@
-using System;
-
 namespace Itbeard.Data.Entites
 {
     public class Statistic

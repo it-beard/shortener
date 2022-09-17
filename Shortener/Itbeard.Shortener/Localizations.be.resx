@@ -128,4 +128,25 @@
     <data name="App_LoginButton" xml:space="preserve">
         <value>Увайсці</value>
     </data>
+    <data name="Host_Exception_Dev" xml:space="preserve">
+        <value>Адбылося неапрацаванае выключэнне. Падрабязнасці гл. у раздзеле "Інструменты распрацоўніка браўзэра".</value>
+    </data>
+    <data name="Host_Exception_Prod" xml:space="preserve">
+        <value>Адбылася памылка. Гэтая аплікацыя можа больш не адказваць да перазагрузкі старонкі.</value>
+    </data>
+    <data name="Host_PageTitle" xml:space="preserve">
+        <value>Барадаты скарачальнік спасылак</value>
+    </data>
+    <data name="AdditionPageTitle" xml:space="preserve">
+        <value>/ Скарачальнік URL</value>
+    </data>
+    <data name="EditLink_PageTitle" xml:space="preserve">
+        <value>Рэдагаванне спасылкі</value>
+    </data>
+    <data name="Index_PageTitle" xml:space="preserve">
+        <value>Усе спасылкі</value>
+    </data>
+    <data name="ReduceLink_PageTitle" xml:space="preserve">
+        <value>Скарачэнне спасылкі</value>
+    </data>
 </root>

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using Autofac;
 using Itbeard.Data;
 using Itbeard.Data.Repositories;

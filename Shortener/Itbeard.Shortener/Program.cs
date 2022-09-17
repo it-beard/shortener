@@ -4,6 +4,7 @@ using Autofac.Extensions.DependencyInjection;
 using Itbeard.Di;
 using Itbeard.Shortener.Common;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Host.ConfigureContainer<ContainerBuilder>(
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddControllers();
+builder.Services.AddHeadElementHelper();
 
 builder.Services.AddCustomAutoMapper();
 builder.Services.AddCustomSqlContext(builder.Configuration);

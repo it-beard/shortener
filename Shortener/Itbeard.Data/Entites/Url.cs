@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Itbeard.Data.Entites
 {
     public class Url

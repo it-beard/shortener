@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Net;
 using AutoMapper;
 using Itbeard.Data;
 using Itbeard.Data.Entites;

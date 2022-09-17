@@ -1,5 +1,3 @@
-using System;
-
 namespace Itbeard.Models
 {
     public class StatisticModel

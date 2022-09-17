@@ -1,4 +1,3 @@
-using System;
 using Itbeard.Data.Repositories.Interfaces;
 
 namespace Itbeard.Data

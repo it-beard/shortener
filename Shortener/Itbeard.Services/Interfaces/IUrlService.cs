@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Itbeard.Models;
 
 namespace Itbeard.Services.Interfaces

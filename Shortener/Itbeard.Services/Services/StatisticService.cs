@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Itbeard.Data;
 using Itbeard.Data.Entites;
 using Itbeard.Data.Repositories.Interfaces;

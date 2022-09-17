@@ -278,5 +278,47 @@ namespace Itbeard.Shortener {
                 return ResourceManager.GetString("App_LoginButton", resourceCulture);
             }
         }
+        
+        internal static string Host_PageTitle {
+            get {
+                return ResourceManager.GetString("Host_PageTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Host_Exception_Prod {
+            get {
+                return ResourceManager.GetString("Host_Exception_Prod", resourceCulture);
+            }
+        }
+        
+        internal static string Host_Exception_Dev {
+            get {
+                return ResourceManager.GetString("Host_Exception_Dev", resourceCulture);
+            }
+        }
+        
+        internal static string AdditionPageTitle {
+            get {
+                return ResourceManager.GetString("AdditionPageTitle", resourceCulture);
+            }
+        }
+        
+        internal static string Index_PageTitle {
+            get {
+                return ResourceManager.GetString("Index_PageTitle", resourceCulture);
+            }
+        }
+        
+        internal static string EditLink_PageTitle {
+            get {
+                return ResourceManager.GetString("EditLink_PageTitle", resourceCulture);
+            }
+        }
+        
+        internal static string ReduceLink_PageTitle {
+            get {
+                return ResourceManager.GetString("ReduceLink_PageTitle", resourceCulture);
+            }
+        }
     }
 }

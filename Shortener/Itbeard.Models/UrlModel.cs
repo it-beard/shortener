@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Itbeard.Models
+﻿namespace Itbeard.Models
 {
     public class UrlModel : StatusCodeModel
     {

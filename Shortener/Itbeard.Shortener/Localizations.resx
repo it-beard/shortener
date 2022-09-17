@@ -112,7 +112,7 @@
         <value>Enter the target URL.</value>
     </data>
     <data name="Error_Message" xml:space="preserve">
-        <value>Упс... При обработке вашего запроса произошла ошибка.</value>
+        <value>Ups... An error occurred while processing your request.</value>
     </data>
     <data name="Redirector_RedirectMessagge" xml:space="preserve">
         <value>You're about to be thrown over here:</value>
@@ -134,5 +134,26 @@
     </data>
     <data name="App_LoginButton" xml:space="preserve">
         <value>Login</value>
+    </data>
+    <data name="Host_PageTitle" xml:space="preserve">
+        <value>The Bearded Link Shortener</value>
+    </data>
+    <data name="Host_Exception_Prod" xml:space="preserve">
+        <value>An error has occurred. This application may no longer respond until page reloaded.</value>
+    </data>
+    <data name="Host_Exception_Dev" xml:space="preserve">
+        <value>An unhandled exception has occurred. See browser dev tools for details.</value>
+    </data>
+    <data name="AdditionPageTitle" xml:space="preserve">
+        <value>/ URL Shortener</value>
+    </data>
+    <data name="Index_PageTitle" xml:space="preserve">
+        <value>All URLs</value>
+    </data>
+    <data name="EditLink_PageTitle" xml:space="preserve">
+        <value>Edit URL</value>
+    </data>
+    <data name="ReduceLink_PageTitle" xml:space="preserve">
+        <value>Reducing URL</value>
     </data>
 </root>

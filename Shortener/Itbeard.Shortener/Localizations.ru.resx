@@ -104,9 +104,6 @@
     <data name="EditLink_Exception_TargetUrlEmpty" xml:space="preserve">
         <value>Введите целевую ссылку.</value>
     </data>
-    <data name="Error_Message" xml:space="preserve">
-        <value>Ups... An error occurred while processing your request.</value>
-    </data>
     <data name="Redirector_RedirectMessagge" xml:space="preserve">
         <value>Сейчас тебя перекинет сюда:</value>
     </data>
@@ -127,5 +124,29 @@
     </data>
     <data name="App_LoginButton" xml:space="preserve">
         <value>Войти</value>
+    </data>
+    <data name="Host_PageTitle" xml:space="preserve">
+        <value>Бородатый сокращатель ссылок</value>
+    </data>
+    <data name="Host_Exception_Dev" xml:space="preserve">
+        <value>Произошло необработанное исключение. Подробности см. в разделе "Инструменты разработчика браузера".</value>
+    </data>
+    <data name="Error_Message" xml:space="preserve">
+        <value>Упс... При обработке вашего запроса произошла ошибка.</value>
+    </data>
+    <data name="Host_Exception_Prod" xml:space="preserve">
+        <value>Произошла ошибка. Это приложение может больше не отвечать до перезагрузки страницы.</value>
+    </data>
+    <data name="AdditionPageTitle" xml:space="preserve">
+        <value>/ Сокращатель URL</value>
+    </data>
+    <data name="EditLink_PageTitle" xml:space="preserve">
+        <value>Редактирование ссылки</value>
+    </data>
+    <data name="Index_PageTitle" xml:space="preserve">
+        <value>Все ссылки</value>
+    </data>
+    <data name="ReduceLink_PageTitle" xml:space="preserve">
+        <value>Сокращение ссылки</value>
     </data>
 </root>
