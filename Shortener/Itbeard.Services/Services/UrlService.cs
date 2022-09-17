@@ -20,12 +20,12 @@ namespace Itbeard.Services.Services
             urlRepository = unitOfWork.Urls;
             this.mapper = mapper;
         }
-        
+
         public async Task<UrlModel> ReduceAsync(string targetUrl, string shortName)
         {
             if (string.IsNullOrEmpty(targetUrl))
             {
-                throw new TargetUrlEmptyException("Ссылка не может быть пустой!");
+                throw new TargetUrlEmptyException();
             }
 
             targetUrl = targetUrl.Trim();
@@ -49,13 +49,13 @@ namespace Itbeard.Services.Services
             var sameShortNameUrl = await urlRepository.GetFirstWhereAsync( u => u.ShortName == shortName);
             if (sameShortNameUrl != null)
             {
-                throw new DuplicateShortUrlNameException("Короткое имя существует. Выберите другое имя.");
+                throw new DuplicateShortUrlNameException();
             }
-            
+
             var url = new Url
             {
                 Id = Guid.NewGuid(),
-                ShortName = string.IsNullOrEmpty(shortName) ? 
+                ShortName = string.IsNullOrEmpty(shortName) ?
                     Guid.NewGuid().ToString().Substring(0, 7) : shortName,
                 TargetUrl = targetUrl,
                 CreatedAt = DateTime.UtcNow
@@ -67,14 +67,14 @@ namespace Itbeard.Services.Services
 
             return urlModel;
         }
-        
+
         public async Task EditAsync(Guid id, string targetUrl)
         {
             if (string.IsNullOrEmpty(targetUrl))
             {
-                throw new TargetUrlEmptyException("Ссылка не может быть пустой!");
+                throw new TargetUrlEmptyException();
             }
-            
+
             var url = await urlRepository.GetFirstWhereAsync( u => u.Id == id);
             url.TargetUrl = targetUrl;
             await urlRepository.UpdateAsync(url);
@@ -91,13 +91,13 @@ namespace Itbeard.Services.Services
             var url = await urlRepository.GetFirstWhereAsync( u => u.Id == id);
             return mapper.Map<UrlModel>(url);
         }
-        
+
         public async Task<List<UrlModel>> GetAllAsync()
         {
             var urls = await urlRepository.GetAllUrlsWithShortStatByDateDescAsync();
             return mapper.Map<List<UrlModel>>(urls);
         }
-        
+
         public async Task DeleteAsync(Guid id)
         {
             var url = await urlRepository.GetFirstWhereAsync( u => u.Id == id);

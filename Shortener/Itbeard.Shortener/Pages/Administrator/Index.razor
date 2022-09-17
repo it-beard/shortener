@@ -9,72 +9,77 @@
 @inject IConfiguration configuration
 @inject IJSRuntime jsRuntime
 
-<style>
-
-</style>
-
-<div class="admin">
+<div class="custom-container">
     <NavMenu />
     <h4 class="card-header d-flex justify-content-between align-items-center">
         <span> Админка ссылок </span>
         <a class="btn btn-primary" href="admin/reduce">Создать ссылку</a>
     </h4>
     <table class="table">
-      <thead>
+        <thead>
         <tr>
-            <th scope="col" style="width: 100px" class="text-center">Создано</th>
-            <th scope="col" style="width: 120px">Короткое имя</th>
-            <th scope="col" style="width: 100px" class="text-center">Переходы</th>
-            <th scope="col">Целевая ссылка</th>
-            <th></th>
+            <th class="date-header text-center">Создано</th>
+            <th class="name-header">Короткое имя</th>
+            <th class="statistics-header">Переходы</th>
+            <th>Целевая ссылка</th>
+            <th class="actions-header text-center"></th>
         </tr>
-      </thead>
-      <tbody>
-      @foreach (var url in urls)
-      {
-          <tr>
-              <td class="text-center">
-                  @url.CreatedAt.ToString("dd/MM/yy")
-              </td>
-              <td>
-                  <a href="@($"{configuration["AppUrl"]}/{url.ShortName}")" target="_blank">@url.ShortName</a>
-              </td>
-              <td class="text-center">
-                 @url.VisitCount 
-              </td>
-              <td>
-                  <p class="target-link">
-                      <a href="@url.TargetUrl" target="_blank">@url.TargetUrl</a>
-                  </p>
-              </td>
-              <td>
-                  <button title="Редактировать" class="btn btn-primary btn-sm" @onclick="()=>OnEdit(url.Id)">
-                      <i class="bi bi-pencil-fill"></i>
-                  </button>
-                  <button title="Удалить" class="btn btn-danger btn-sm" @onclick="()=>OnDelete(url)">
-                      <i class="bi bi-trash-fill"></i>
-                  </button>
-              </td>
-          </tr>
-      }
-      </tbody>
+        </thead>
+        <tbody>
+        @foreach (var url in urls)
+        {
+            <tr>
+                <td class="text-center">
+                    @url.CreatedAt.ToString("dd/MM/yy")
+                </td>
+
+                <td>
+                    <a href="@($"{configuration["AppUrl"]}/{url.ShortName}")" target="_blank">@url.ShortName</a>
+                </td>
+
+                <td>
+                    @url.VisitCount
+                </td>
+
+                <td>
+                    <div class="target-link">
+                        <a href="@url.TargetUrl" target="_blank">@url.TargetUrl</a>
+                    </div>
+                </td>
+
+                <td class="actions-row text-center">
+                    <div class="actions-buttons">
+                        @{
+                            <button title="Редактировать" class="btn btn-primary btn-sm" @onclick="() => OnEdit(url.Id)">
+                                <i class="bi bi-pencil-fill"></i>
+                            </button>
+                        }
+                        @{
+                            <button title="Удалить" class="btn btn-danger btn-sm" @onclick="() => OnDelete(url)">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+        </tbody>
     </table>
-    
 </div>
 
 @code {
     private List<UrlModel> urls = new();
-    
+
     protected override async Task OnInitializedAsync()
     {
         urls = await urlService.GetAllAsync();
     }
-    
+
     private async Task OnEdit(Guid id)
     {
         NavigationManager.NavigateTo($"admin/edit/{id}");
     }
-    
+
     private async Task OnDelete(UrlModel url)
     {
         var confirmed = await jsRuntime.InvokeAsync<bool>("confirm", $"Уверены, что хотите удалить {url.ShortName}?");

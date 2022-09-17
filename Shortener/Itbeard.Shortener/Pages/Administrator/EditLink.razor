@@ -11,15 +11,18 @@
 <div class="custom-container">
     <NavMenu />
     <h2>Редактирование ссылки</h2>
-    
+
     <div class="form-group">
-        <input class="form-control" type="text" required="required" @bind="url.TargetUrl" placeholder="Введите новый целевой адрес">
+        <label for="link">Целевая ссылка</label>
+        <input id="link" class="form-control" type="text" required="required" @bind="url.TargetUrl" placeholder="Введите новый целевой адрес">
     </div>
-    
+
     <div class="form-group">
-        <input class="form-control" type="text" @bind="url.ShortName" disabled="disabled">
+        <label for="link">Короткое имя</label>
+        <input id="name" class="form-control" type="text" @bind="url.ShortName" disabled="disabled">
+        <small id="nateNote" class="form-text text-muted">Для изменения короткого имени удалите эту ссылку и создайте новую с необходимым именем.</small>
     </div>
-    
+
     <div class="form-group">
         <button class="btn btn-success w-100" @onclick="OnButtonClick" disabled="@(url == null || url.Id == Guid.Empty)">Сохранить</button>
     </div>
@@ -45,10 +48,10 @@
         {
             NavigationManager.NavigateTo("admin");
         }
-        
+
         url = await GetUrlAsync(parsedId);
     }
-    
+
     private async Task OnButtonClick()
     {
         error = string.Empty;
@@ -59,14 +62,10 @@
         }
         catch (TargetUrlEmptyException ex)
         {
-            error = ex.Message;
-        }
-        catch (DuplicateShortUrlNameException ex)
-        {
-            error = ex.Message;
+            error = "Введите целевую ссылку.";
         }
     }
-    
+
     private async Task<UrlModel> GetUrlAsync(Guid id)
     {
         return await urlService.GetByIdAsync(id);

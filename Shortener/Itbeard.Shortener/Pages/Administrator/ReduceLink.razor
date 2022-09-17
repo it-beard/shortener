@@ -10,15 +10,18 @@
 <div class="custom-container">
     <NavMenu />
     <h2>Сокращение ссылки</h2>
-    
+
     <div class="form-group">
-        <input class="form-control" type="text" required="required" @bind="link" placeholder="Введите ссылку для сокращения">
+        <label for="link">Целевая ссылка</label>
+        <input id="link" class="form-control" type="text" required="required" @bind="link" placeholder="Введите ссылку для сокращения">
     </div>
-    
+
     <div class="form-group">
-        <input class="form-control" type="text" @bind="name" placeholder="Введите название ссылки (не обязательное поле до 20 символов)">
+        <label for="name">Короткое имя</label>
+        <input id="name" class="form-control" type="text" @bind="name" placeholder="Введите короткое имя для ссылки">
+        <small id="nateNote" class="form-text text-muted">Если оставить поле пустым, то сгенерируется случайное имя из 7 символов.</small>
     </div>
-    
+
     <div class="form-group">
         <button class="btn btn-success  w-100" @onclick="OnCreateButtonClick">Создать</button>
     </div>
@@ -26,7 +29,8 @@
     @if (!string.IsNullOrEmpty(reducedUrl))
     {
         <div class="form-group reduce">
-            <input class="form-control" type="text" @bind="reducedUrl" placeholder="Результат">
+            <label for="finalLink">Итоговая ссылка</label>
+            <input id="finalLink" class="form-control" type="text" @bind="reducedUrl" placeholder="Результат">
         </div>
 
         <div class="form-group copy">
@@ -52,10 +56,10 @@
     {
         if (!string.IsNullOrEmpty(name) && name.Length > Constants.MaxShortUrlNameLength)
         {
-            error = "Недопустимая длина имени ссылки";
+            error = "Максимальная длина короткого имени ссылки не может превышать 20 символов.";
             return;
         }
-        
+
         error = string.Empty;
         reducedUrl = string.Empty;
         try
@@ -68,11 +72,11 @@
         }
         catch (TargetUrlEmptyException ex)
         {
-            error = ex.Message;
+            error = "Введите целевую ссылку.";
         }
         catch (DuplicateShortUrlNameException ex)
         {
-            error = ex.Message;
+            error = "Короткое имя существует. Выберите другое имя.";
         }
     }
 
