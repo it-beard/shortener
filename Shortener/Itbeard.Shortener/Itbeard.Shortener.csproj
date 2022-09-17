@@ -14,13 +14,16 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Autofac" Version="6.3.0" />
+        <PackageReference Include="Autofac" Version="6.4.0" />
         <PackageReference Include="DeviceDetector.NET.NetCore" Version="3.9.2.2" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.3" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.9" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.9" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="TextCopy" Version="6.1.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
