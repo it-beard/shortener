@@ -4,12 +4,30 @@
 
 [![Deploy apps to Production](https://github.com/it-beard/shortener/actions/workflows/deployment-prod-action.yml/badge.svg?branch=main)](https://github.com/it-beard/shortener/actions/workflows/deployment-prod-action.yml)
 
-# Описание
-Web-сервис по сокращению ссылок от АйТиБороды. Создан на .NET 6 и Blazor Server.
+# Description
+**URL Shortener** - this is web service for shortening URLs. Created on .NET 6 and Blazor Server.
 
-<img src="https://github.com/it-beard/shortener/blob/develop/.github/readme-images/1.png" title="Список всех ссылок" width="600" />
+URL shortener consist of two parts:
+- User area
+- Admin area
 
-<img src="https://github.com/it-beard/shortener/blob/develop/.github/readme-images/2.png" title="Интерфейс сокращения ссылки" width="600" />
+**User area** is a simple page that working as redirection mechanism. 
+- User type shortened link in browser
+- Goes to the redirector's page (file `Redirector.razor`)
+- `Redirector.razor` redirect user to target URL
+
+**Admin area** has functionality described bellow:
+- Authentication flow using Auth0 
+- Reducing links into short link wit 7-simbolic auto-generated or predefined alias
+- Editing target URL in created short link
+
+<img src="https://github.com/it-beard/shortener/blob/develop/.github/readme-images/0.png" title="Login interface" width="600" />
+
+<img src="https://github.com/it-beard/shortener/blob/develop/.github/readme-images/1.png" title="List of all URLs" width="600" />
+
+<img src="https://github.com/it-beard/shortener/blob/develop/.github/readme-images/2.png" title="Reduce URL interface" width="600" />
+
+<img src="https://github.com/it-beard/shortener/blob/develop/.github/readme-images/3.png" title="Edit URL interface" width="600" />
 
 # Настройка и запуск
 1. Подготовьте SQL-подобную базу данных.
